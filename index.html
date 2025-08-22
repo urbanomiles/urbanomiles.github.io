@@ -3,43 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
-    <!-- Use Tailwind CSS for a minimalist, modern aesthetic -->
+    <title>Your Name | Portfolio Template</title>
+    <!-- Tailwind CSS is used for a highly customizable and responsive design -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Add custom Tailwind configuration to define colors and animations -->
+    <!-- Add custom Tailwind configuration, including a new color palette and animations -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        // Define a new accent color
-                        accent: '#ff4a4a',
-                        // Define custom dark shades
-                        dark: {
-                            100: '#111111',
-                            200: '#222222',
-                            300: '#333333'
-                        }
+                        // A new, vibrant color palette for a modern feel
+                        'primary': '#4f46e5', // A deep indigo for main accents
+                        'secondary': '#a78bfa', // A lighter purple for secondary elements
+                        'dark-bg': '#121212', // A very dark background
+                        'dark-card': '#1e1e1e', // A slightly lighter dark for cards
+                        'text-light': '#e0e0e0', // Light gray for body text
+                        'text-header': '#ffffff', // Pure white for headers
                     },
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
                     },
-                    // Define custom animations
+                    // Define custom animations for a dynamic user experience
                     animation: {
-                        fadeInUp: 'fadeInUp 0.6s ease-out',
-                        trackingIn: 'trackingIn 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both',
+                        fadeIn: 'fadeIn 0.8s ease-out',
+                        slideInUp: 'slideInUp 0.6s ease-out',
                         pulseHover: 'pulseHover 0.4s ease-in-out',
                     },
-                    // Define custom keyframes for the animations
+                    // Define keyframes for the animations
                     keyframes: {
-                        fadeInUp: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        trackingIn: {
-                            '0%': { 'letter-spacing': '-0.5em', opacity: '0' },
-                            '40%': { opacity: '0.6' },
-                            '100%': { opacity: '1' },
                         },
                         pulseHover: {
                             '0%, 100%': { transform: 'scale(1)' },
@@ -55,11 +53,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Apply a custom font and dark background to the whole page */
+        /* Base styles for the body */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000;
-            color: #f5f5f5;
+            background-color: theme('colors.dark-bg');
+            color: theme('colors.text-light');
             min-height: 100vh;
         }
         /* Custom scrollbar for aesthetics */
@@ -67,126 +65,162 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #111;
+            background: theme('colors.dark-bg');
         }
         ::-webkit-scrollbar-thumb {
-            background: #444;
+            background: theme('colors.primary');
             border-radius: 4px;
-        }
-        /* Add a subtle pulse effect on hover to the project cards */
-        .project-card:hover {
-            animation: pulseHover 0.4s ease-in-out;
-            box-shadow: 0 10px 15px -3px rgba(255, 74, 74, 0.2), 0 4px 6px -2px rgba(255, 74, 74, 0.1);
         }
     </style>
 </head>
 <body class="flex flex-col items-center">
-    <!-- Main container for content -->
-    <main class="w-full max-w-5xl px-4 md:px-8 lg:px-12 my-8">
+    <!-- Main container for all content. Use this to set max width and padding. -->
+    <main class="w-full max-w-6xl px-4 md:px-8 lg:px-12 my-8">
 
-        <!-- Header/Navigation -->
-        <header class="flex justify-between items-center py-6 mb-16">
-            <h1 class="text-3xl font-bold tracking-tight text-white animate-fadeInUp">Your Name</h1>
-            <nav class="hidden md:flex space-x-6 text-gray-400">
-                <a href="#work" class="hover:text-white transition-colors duration-200 animate-fadeInUp delay-100">Work</a>
-                <a href="#about" class="hover:text-white transition-colors duration-200 animate-fadeInUp delay-200">About</a>
-                <a href="#contact" class="hover:text-white transition-colors duration-200 animate-fadeInUp delay-300">Contact</a>
+        <!-- HEADER AND NAVIGATION SECTION -->
+        <!-- This header remains fixed at the top on larger screens and offers a mobile menu. -->
+        <header class="flex justify-between items-center py-6 mb-16 relative">
+            <!-- Your Name/Logo. Change "Your Name" to your own. -->
+            <h1 class="text-3xl font-bold tracking-tight text-text-header animate-fadeIn">Your Name</h1>
+            
+            <!-- Desktop Navigation Links. Add more links by copying and pasting an anchor tag. -->
+            <nav class="hidden md:flex space-x-8 text-text-light">
+                <a href="#about" class="hover:text-primary transition-colors duration-200 animate-slideInUp delay-100">About</a>
+                <a href="#projects" class="hover:text-primary transition-colors duration-200 animate-slideInUp delay-200">Projects</a>
+                <a href="#blog" class="hover:text-primary transition-colors duration-200 animate-slideInUp delay-300">Blog</a>
+                <a href="#contact" class="hover:text-primary transition-colors duration-200 animate-slideInUp delay-400">Contact</a>
             </nav>
         </header>
 
-        <!-- Hero Section -->
-        <section class="mb-24 md:mb-32 text-center md:text-left">
-            <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
-                <div>
-                    <h2 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-4 animate-trackingIn">
-                        Hello. I'm <span class="text-accent">Your Name</span>
-                    </h2>
-                    <p class="text-gray-300 text-lg md:text-2xl leading-relaxed animate-fadeInUp delay-400">
-                        A passionate and creative developer who loves building beautiful and functional applications.
+        <!-- HERO SECTION -->
+        <!-- This is the main introduction to your site. Change the text to describe yourself. -->
+        <section class="mb-24 md:mb-32 text-center md:text-left animate-fadeIn">
+            <h2 class="text-6xl md:text-8xl font-extrabold leading-tight text-text-header mb-4 animate-slideInUp">
+                Hello. I'm <span class="text-primary">Your Name</span>
+            </h2>
+            <p class="text-text-light text-xl md:text-3xl leading-relaxed animate-slideInUp delay-300">
+                A passionate and creative <span class="text-secondary font-semibold">web developer</span> who loves to build beautiful and functional applications.
+            </p>
+        </section>
+        
+        <!-- ABOUT ME SECTION -->
+        <!-- Use this section to share your professional story. You can add more paragraphs or lists. -->
+        <section id="about" class="mb-24 animate-fadeIn">
+            <h2 class="text-5xl font-bold text-center mb-12 text-text-header">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                <!-- Profile Image. Replace the placeholder URL with your own image. -->
+                <div class="flex-shrink-0 mb-8 md:mb-0">
+                    <img src="https://placehold.co/200x200/4f46e5/ffffff?text=Your+Photo" alt="Your Profile Picture" class="rounded-full w-48 h-48 object-cover border-4 border-primary shadow-lg animate-pulseHover">
+                </div>
+                <!-- Your bio. Update this with your own background and goals. -->
+                <div class="flex-grow text-lg leading-relaxed text-center md:text-left">
+                    <p class="mb-6">
+                        I am a software engineer with expertise in building dynamic, responsive, and scalable web applications. My journey in technology started with a simple fascination for how things work, and it has evolved into a passion for creating impactful digital experiences.
+                    </p>
+                    <p>
+                        I specialize in modern JavaScript frameworks like React, and I'm always eager to explore new technologies to solve complex problems. When I'm not coding, you can find me [your hobby].
                     </p>
                 </div>
             </div>
         </section>
-        
-        <!-- Work Section -->
-        <section id="work" class="mb-24">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10 animate-fadeInUp">My Work</h2>
-            <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Project Card 1 -->
-                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden project-card animate-fadeInUp delay-200">
-                    <img src="https://placehold.co/600x400/3d4852/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+        <!-- PROJECTS SECTION -->
+        <!-- Showcase your best projects here. Update the image URLs, titles, descriptions, and links. -->
+        <section id="projects" class="mb-24 animate-fadeIn">
+            <h2 class="text-5xl font-bold text-center mb-12 text-text-header">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Project Card 1. Copy this div to add more projects. -->
+                <div class="group bg-dark-card rounded-xl shadow-lg border border-gray-700 overflow-hidden project-card animate-slideInUp delay-100">
+                    <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Project One</h3>
-                        <p class="text-gray-400 text-sm mb-4">A brief description of your project. Mention the technologies used here, like React, Node.js, and MongoDB.</p>
-                        <a href="https://github.com/yourusername/project1" target="_blank" class="inline-block bg-accent text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-red-600">
+                        <h3 class="text-2xl font-bold mb-2 text-text-header">Project One Title</h3>
+                        <p class="text-text-light text-sm mb-4">A brief description of your project. Mention the technologies used here, like React, Node.js, and MongoDB.</p>
+                        <a href="#" target="_blank" class="inline-block bg-primary text-text-header font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-secondary">
                             View on GitHub
                         </a>
                     </div>
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden project-card animate-fadeInUp delay-400">
-                    <img src="https://placehold.co/600x400/5e6878/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="group bg-dark-card rounded-xl shadow-lg border border-gray-700 overflow-hidden project-card animate-slideInUp delay-200">
+                    <img src="https://placehold.co/600x400/a78bfa/1e1e1e?text=Project+2" alt="Project 2" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Project Two</h3>
-                        <p class="text-gray-400 text-sm mb-4">A brief description of your project. This could be a static website or a mobile app built with Swift.</p>
-                        <a href="https://github.com/yourusername/project2" target="_blank" class="inline-block bg-accent text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-red-600">
+                        <h3 class="text-2xl font-bold mb-2 text-text-header">Project Two Title</h3>
+                        <p class="text-text-light text-sm mb-4">A brief description of your project. This could be a mobile app built with Swift or a data visualization project.</p>
+                        <a href="#" target="_blank" class="inline-block bg-primary text-text-header font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-secondary">
                             View on GitHub
                         </a>
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden project-card animate-fadeInUp delay-600">
-                    <img src="https://placehold.co/600x400/7a8596/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="group bg-dark-card rounded-xl shadow-lg border border-gray-700 overflow-hidden project-card animate-slideInUp delay-300">
+                    <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Project Three</h3>
-                        <p class="text-gray-400 text-sm mb-4">A brief description of your project. Maybe a data visualization project using D3.js and Python.</p>
-                        <a href="https://github.com/yourusername/project3" target="_blank" class="inline-block bg-accent text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-red-600">
+                        <h3 class="text-2xl font-bold mb-2 text-text-header">Project Three Title</h3>
+                        <p class="text-text-light text-sm mb-4">A brief description of your project. This could be a static website or a complex web application using different frameworks.</p>
+                        <a href="#" target="_blank" class="inline-block bg-primary text-text-header font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-secondary">
                             View on GitHub
                         </a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG / ARTICLES SECTION -->
+        <!-- Use this section to share your thoughts, tutorials, or updates. -->
+        <section id="blog" class="mb-24 animate-fadeIn">
+            <h2 class="text-5xl font-bold text-center mb-12 text-text-header">Latest Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Blog Post Card 1. Update the title, description, and link. -->
+                <div class="group bg-dark-card rounded-xl shadow-lg border border-gray-700 overflow-hidden p-6 hover:shadow-lg transition-shadow duration-300 animate-slideInUp delay-100">
+                    <h3 class="text-2xl font-bold mb-2 text-text-header">How to Build a Portfolio Site</h3>
+                    <p class="text-text-light text-sm mb-4">A step-by-step guide to building your first portfolio website from scratch.</p>
+                    <a href="#" class="text-secondary font-semibold hover:text-primary transition-colors duration-200">Read More &rarr;</a>
+                </div>
+
+                <!-- Blog Post Card 2 -->
+                <div class="group bg-dark-card rounded-xl shadow-lg border border-gray-700 overflow-hidden p-6 hover:shadow-lg transition-shadow duration-300 animate-slideInUp delay-200">
+                    <h3 class="text-2xl font-bold mb-2 text-text-header">My Favorite VS Code Extensions</h3>
+                    <p class="text-text-light text-sm mb-4">A list of essential extensions to boost your productivity as a developer.</p>
+                    <a href="#" class="text-secondary font-semibold hover:text-primary transition-colors duration-200">Read More &rarr;</a>
+                </div>
+
+                <!-- Blog Post Card 3 -->
+                <div class="group bg-dark-card rounded-xl shadow-lg border border-gray-700 overflow-hidden p-6 hover:shadow-lg transition-shadow duration-300 animate-slideInUp delay-300">
+                    <h3 class="text-2xl font-bold mb-2 text-text-header">The Power of Custom CSS Properties</h3>
+                    <p class="text-text-light text-sm mb-4">Exploring the benefits and practical use cases of CSS variables in modern web design.</p>
+                    <a href="#" class="text-secondary font-semibold hover:text-primary transition-colors duration-200">Read More &rarr;</a>
                 </div>
 
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="mb-24">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10 animate-fadeInUp">About Me</h2>
-            <div class="max-w-3xl mx-auto text-center animate-fadeInUp delay-200">
-                <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-6">
-                    [Your Name] is a software developer with a strong focus on creating clean, intuitive, and effective digital experiences. With a background in [Your Field], I am passionate about crafting solutions that are both technically robust and aesthetically pleasing.
-                </p>
-                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
-                    I believe that good design and solid engineering go hand-in-hand, and I'm constantly learning new skills to stay on the cutting edge.
-                </p>
-            </div>
-        </section>
-
-        <!-- Contact/Social Links Section -->
-        <section id="contact" class="flex flex-col items-center py-10 animate-fadeInUp">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">Let's Connect</h2>
-            <a href="mailto:your_email@example.com" class="bg-accent text-white font-semibold text-lg py-3 px-8 rounded-full mb-6 transition-colors duration-200 hover:bg-red-600">
-                Let's Talk
+        <!-- CONTACT SECTION -->
+        <!-- This section provides your contact information. Update the links to your social media and email. -->
+        <section id="contact" class="flex flex-col items-center py-10 animate-fadeIn">
+            <h2 class="text-5xl font-bold text-center mb-8 text-text-header">Let's Connect</h2>
+            <a href="mailto:your_email@example.com" class="bg-primary text-text-header font-semibold text-lg py-3 px-8 rounded-full mb-6 transition-colors duration-200 hover:bg-secondary">
+                Send an Email
             </a>
-            <div class="flex space-x-6">
+            <div class="flex space-x-6 text-text-light">
                 <!-- GitHub Link -->
-                <a href="https://github.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="https://github.com/yourusername" target="_blank" class="hover:text-primary transition-colors duration-200">
+                    <!-- Paste your social media icon SVGs here or use a library like Font Awesome -->
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.83 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.367-1.341-3.367-1.341-.454-1.156-1.11-1.46-1.11-1.46-.908-.619.069-.605.069-.605 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.087 2.91.832.092-.646.357-1.087.653-1.334-2.228-.252-4.552-1.114-4.552-4.929 0-1.09.39-1.984 1.029-2.675-.103-.252-.446-1.264.098-2.645 0 0 .84-.265 2.75 1.025A9.28 9.28 0 0112 6.868c.84.009 1.68.11 2.5.326 1.909-1.29 2.747-1.025 2.747-1.025.546 1.381.202 2.393.099 2.645.64.691 1.028 1.585 1.028 2.675 0 3.823-2.328 4.67-4.562 4.922.357.308.678.92.678 1.855 0 1.335-.012 2.41-.012 2.73 0 .267.18.579.688.481C20.138 20.203 23 16.448 23 12.017 23 6.484 18.522 2 13 2z" clip-rule="evenodd" />
                     </svg>
                 </a>
                 <!-- LinkedIn Link -->
-                <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="hover:text-primary transition-colors duration-200">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.763s.784-1.763 1.75-1.763 1.75.79 1.75 1.763-.783 1.763-1.75 1.763zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                 </a>
                 <!-- Twitter Link -->
-                <a href="https://twitter.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="https://twitter.com/yourusername" target="_blank" class="hover:text-primary transition-colors duration-200">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.791-1.574 2.16-2.723-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.102 0-5.618 2.47-5.618 5.517 0 .432.051.851.144 1.252-4.673-.231-8.816-2.433-11.597-5.787-.482.851-.762 1.815-.762 2.875 0 1.916.974 3.606 2.454 4.596-.906-.028-1.75-.286-2.498-.679-.001.022-.001.045-.001.069 0 2.674 1.905 4.896 4.425 5.395-.463.129-.95.197-1.455.197-.355 0-.7-.035-1.036-.101.706 2.193 2.744 3.791 5.166 3.834-1.898 1.464-4.28 2.345-6.899 2.345-.452 0-.899-.026-1.341-.078 2.451 1.542 5.362 2.446 8.528 2.446 10.293 0 15.92-8.52 15.92-15.92 0-.242-.007-.483-.017-.722.981-.708 1.835-1.597 2.516-2.615z" />
                     </svg>
@@ -196,8 +230,8 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center text-gray-500 text-sm py-8">
+    <!-- FOOTER -->
+    <footer class="text-center text-text-light text-sm py-8">
         <p>&copy; 2024 Your Name. All Rights Reserved.</p>
     </footer>
 
