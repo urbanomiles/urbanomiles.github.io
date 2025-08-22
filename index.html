@@ -1,100 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name – Aesthetic Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Montserrat', sans-serif; background: #111; color: #fff; overflow-x: hidden; }
-
-    /* Navigation */
-    nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); padding: 1rem; z-index: 1000; }
-    nav a { margin: 0 1.5rem; color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-    nav a:hover { color: #ff69b4; }
-
-    /* Hero Section */
-    header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 25%, #fad0c4 50%, #fbc2eb 75%, #a18cd1 100%);
-      color: #fff;
-      animation: gradient 15s ease infinite;
-      background-size: 600% 600%;
-    }
-    header h1 { font-size: 4rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
-    header h2 { font-weight: 300; font-size: 2rem; }
-    @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
-    /* Sections */
-    section { padding: 6rem 2rem; max-width: 1200px; margin: auto; }
-    section h3 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: #ff69b4; position: relative; }
-    section h3::after { content: ''; display: block; width: 80px; height: 4px; background: #fff; margin: 0.5rem auto 0; border-radius: 2px; }
-
-    /* About */
-    .about p { text-align: center; max-width: 800px; margin: 1rem auto; font-size: 1.2rem; color: #f0f0f0; }
-
-    /* Gallery */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-    .gallery img { width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: transform 0.4s, box-shadow 0.4s; cursor: pointer; }
-    .gallery img:hover { transform: scale(1.1) rotate(2deg); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-
-    /* Contact */
-    .contact { text-align: center; margin: 4rem 0; }
-    .contact a { display: inline-block; margin: 1rem; padding: 0.8rem 2rem; border-radius: 40px; background: linear-gradient(45deg, #ff6ec4, #7873f5); color: #fff; text-decoration: none; font-weight: 500; transition: transform 0.3s, box-shadow 0.3s; }
-    .contact a:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255,110,196,0.6); }
-
-    /* Footer */
-    footer { text-align: center; padding: 2rem 1rem; background: #111; color: #999; font-size: 0.9rem; border-top: 1px solid #444; }
-
-    /* Floating colored blobs */
-    .blob { position: absolute; border-radius: 50%; opacity: 0.6; animation: float 10s ease-in-out infinite; mix-blend-mode: screen; }
-    .blob1 { width: 200px; height: 200px; background: #ff6ec4; top: 10%; left: 5%; animation-delay: 0s; }
-    .blob2 { width: 300px; height: 300px; background: #7873f5; top: 50%; left: 70%; animation-delay: 2s; }
-    .blob3 { width: 250px; height: 250px; background: #ffdc7d; top: 70%; left: 20%; animation-delay: 4s; }
-    @keyframes float { 0%,100% { transform: translateY(0px) translateX(0px); } 50% { transform: translateY(-50px) translateX(30px); } }
-
-    html { scroll-behavior: smooth; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Portfolio</title>
+    <!-- Use Tailwind CSS for rapid, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply a custom font and dark background to the whole page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            min-height: 100vh;
+        }
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2a2a2a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a4a4a;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<body class="flex flex-col items-center">
+    <!-- Main container for content -->
+    <main class="w-full max-w-5xl px-4 md:px-8 lg:px-12 my-8">
 
-  <header>
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-    <h1>Your Name</h1>
-    <h2>Designer • Developer • Creative</h2>
-  </header>
+        <!-- Header/Navigation -->
+        <header class="flex justify-between items-center py-6 mb-8">
+            <h1 class="text-3xl font-bold tracking-tight text-white">Your Name</h1>
+            <nav class="hidden md:flex space-x-6 text-gray-400">
+                <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
+                <a href="#projects" class="hover:text-white transition-colors duration-200">Projects</a>
+                <a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a>
+            </nav>
+        </header>
 
-  <section id="about" class="about">
-    <h3>About Me</h3>
-    <p>I am a multi-disciplinary creative passionate about colors, interactions, and vibrant digital experiences. I blend design, code, and animation to build immersive portfolios and projects.</p>
-  </section>
+        <!-- About Section -->
+        <section id="about" class="bg-gray-800 p-8 md:p-12 rounded-xl shadow-xl border border-gray-700 mb-12">
+            <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-12">
+                <!-- Profile Image -->
+                <img src="https://placehold.co/150x150/4a4a4a/ffffff?text=Avatar" alt="Your Name" class="rounded-full w-28 h-28 md:w-40 md:h-40 object-cover border-4 border-gray-600 shadow-md">
+                <!-- About Text -->
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">Hello, I'm [Your Name] 👋</h2>
+                    <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                        I'm a passionate and creative software developer specializing in web technologies. I love building beautiful and functional applications that solve real-world problems. Welcome to my portfolio!
+                    </p>
+                </div>
+            </div>
+        </section>
 
-  <section id="projects">
-    <h3>My Projects</h3>
-    <div class="gallery">
-      <img src="project1.jpg" alt="Project 1">
-      <img src="project2.jpg" alt="Project 2">
-      <img src="project3.jpg" alt="Project 3">
-      <img src="project4.jpg" alt="Project 4">
-    </div>
-  </section>
+        <!-- Projects Section -->
+        <section id="projects" class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">My Work</h2>
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-  <section id="contact" class="contact">
-    <h3>Contact Me</h3>
-    <a href="mailto:youremail@example.com">Email Me</a>
-    <a href="https://twitter.com" target="_blank">Twitter</a>
-    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-  </section>
+                <!-- Project Card 1 -->
+                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/3d4852/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Project One</h3>
+                        <p class="text-gray-400 text-sm mb-4">A brief description of your project. Mention the technologies used here, like React, Node.js, and MongoDB.</p>
+                        <a href="https://github.com/yourusername/project1" class="inline-block bg-white text-gray-800 font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
 
-  <footer>
-    <p>© 2025 Your Name. Crafted with color, creativity, and code.</p>
-  </footer>
+                <!-- Project Card 2 -->
+                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/5e6878/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Project Two</h3>
+                        <p class="text-gray-400 text-sm mb-4">A brief description of your project. This could be a static website or a mobile app built with Swift.</p>
+                        <a href="https://github.com/yourusername/project2" class="inline-block bg-white text-gray-800 font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/7a8596/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Project Three</h3>
+                        <p class="text-gray-400 text-sm mb-4">A brief description of your project. Maybe a data visualization project using D3.js and Python.</p>
+                        <a href="https://github.com/yourusername/project3" class="inline-block bg-white text-gray-800 font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact/Social Links Section -->
+        <section id="contact" class="flex flex-col items-center py-10">
+            <h2 class="text-3xl font-bold mb-6">Let's Connect</h2>
+            <p class="text-gray-400 text-lg mb-8 text-center max-w-xl">
+                I'm always open to new opportunities and collaborations. Feel free to reach out or connect with me on social media.
+            </p>
+            <div class="flex space-x-6">
+                <!-- GitHub Link -->
+                <a href="https://github.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.83 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.367-1.341-3.367-1.341-.454-1.156-1.11-1.46-1.11-1.46-.908-.619.069-.605.069-.605 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.087 2.91.832.092-.646.357-1.087.653-1.334-2.228-.252-4.552-1.114-4.552-4.929 0-1.09.39-1.984 1.029-2.675-.103-.252-.446-1.264.098-2.645 0 0 .84-.265 2.75 1.025A9.28 9.28 0 0112 6.868c.84.009 1.68.11 2.5.326 1.909-1.29 2.747-1.025 2.747-1.025.546 1.381.202 2.393.099 2.645.64.691 1.028 1.585 1.028 2.675 0 3.823-2.328 4.67-4.562 4.922.357.308.678.92.678 1.855 0 1.335-.012 2.41-.012 2.73 0 .267.18.579.688.481C20.138 20.203 23 16.448 23 12.017 23 6.484 18.522 2 13 2z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <!-- LinkedIn Link -->
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.763s.784-1.763 1.75-1.763 1.75.79 1.75 1.763-.783 1.763-1.75 1.763zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <!-- Twitter Link -->
+                <a href="https://twitter.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.791-1.574 2.16-2.723-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.102 0-5.618 2.47-5.618 5.517 0 .432.051.851.144 1.252-4.673-.231-8.816-2.433-11.597-5.787-.482.851-.762 1.815-.762 2.875 0 1.916.974 3.606 2.454 4.596-.906-.028-1.75-.286-2.498-.679-.001.022-.001.045-.001.069 0 2.674 1.905 4.896 4.425 5.395-.463.129-.95.197-1.455.197-.355 0-.7-.035-1.036-.101.706 2.193 2.744 3.791 5.166 3.834-1.898 1.464-4.28 2.345-6.899 2.345-.452 0-.899-.026-1.341-.078 2.451 1.542 5.362 2.446 8.528 2.446 10.293 0 15.92-8.52 15.92-15.92 0-.242-.007-.483-.017-.722.981-.708 1.835-1.597 2.516-2.615z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 text-sm py-4">
+        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
