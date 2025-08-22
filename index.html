@@ -6,7 +6,7 @@
     <title>Your Name | Portfolio</title>
     <!-- Use Tailwind CSS for a minimalist, modern aesthetic -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Add custom Tailwind configuration to define colors -->
+    <!-- Add custom Tailwind configuration to define colors and animations -->
     <script>
         tailwind.config = {
             theme: {
@@ -23,6 +23,28 @@
                     },
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
+                    },
+                    // Define custom animations
+                    animation: {
+                        fadeInUp: 'fadeInUp 0.6s ease-out',
+                        trackingIn: 'trackingIn 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both',
+                        pulseHover: 'pulseHover 0.4s ease-in-out',
+                    },
+                    // Define custom keyframes for the animations
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        trackingIn: {
+                            '0%': { 'letter-spacing': '-0.5em', opacity: '0' },
+                            '40%': { opacity: '0.6' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseHover: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.02)' },
+                        }
                     }
                 }
             }
@@ -51,6 +73,11 @@
             background: #444;
             border-radius: 4px;
         }
+        /* Add a subtle pulse effect on hover to the project cards */
+        .project-card:hover {
+            animation: pulseHover 0.4s ease-in-out;
+            box-shadow: 0 10px 15px -3px rgba(255, 74, 74, 0.2), 0 4px 6px -2px rgba(255, 74, 74, 0.1);
+        }
     </style>
 </head>
 <body class="flex flex-col items-center">
@@ -59,11 +86,11 @@
 
         <!-- Header/Navigation -->
         <header class="flex justify-between items-center py-6 mb-16">
-            <h1 class="text-3xl font-bold tracking-tight text-white">Your Name</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-white animate-fadeInUp">Your Name</h1>
             <nav class="hidden md:flex space-x-6 text-gray-400">
-                <a href="#work" class="hover:text-white transition-colors duration-200">Work</a>
-                <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
-                <a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a>
+                <a href="#work" class="hover:text-white transition-colors duration-200 animate-fadeInUp delay-100">Work</a>
+                <a href="#about" class="hover:text-white transition-colors duration-200 animate-fadeInUp delay-200">About</a>
+                <a href="#contact" class="hover:text-white transition-colors duration-200 animate-fadeInUp delay-300">Contact</a>
             </nav>
         </header>
 
@@ -71,10 +98,10 @@
         <section class="mb-24 md:mb-32 text-center md:text-left">
             <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
                 <div>
-                    <h2 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-4">
+                    <h2 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-4 animate-trackingIn">
                         Hello. I'm <span class="text-accent">Your Name</span>
                     </h2>
-                    <p class="text-gray-300 text-lg md:text-2xl leading-relaxed">
+                    <p class="text-gray-300 text-lg md:text-2xl leading-relaxed animate-fadeInUp delay-400">
                         A passionate and creative developer who loves building beautiful and functional applications.
                     </p>
                 </div>
@@ -83,12 +110,12 @@
         
         <!-- Work Section -->
         <section id="work" class="mb-24">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10">My Work</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10 animate-fadeInUp">My Work</h2>
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Project Card 1 -->
-                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden">
+                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden project-card animate-fadeInUp delay-200">
                     <img src="https://placehold.co/600x400/3d4852/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Project One</h3>
@@ -100,7 +127,7 @@
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden">
+                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden project-card animate-fadeInUp delay-400">
                     <img src="https://placehold.co/600x400/5e6878/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Project Two</h3>
@@ -112,7 +139,7 @@
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden">
+                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden project-card animate-fadeInUp delay-600">
                     <img src="https://placehold.co/600x400/7a8596/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Project Three</h3>
@@ -128,8 +155,8 @@
 
         <!-- About Section -->
         <section id="about" class="mb-24">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10">About Me</h2>
-            <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10 animate-fadeInUp">About Me</h2>
+            <div class="max-w-3xl mx-auto text-center animate-fadeInUp delay-200">
                 <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-6">
                     [Your Name] is a software developer with a strong focus on creating clean, intuitive, and effective digital experiences. With a background in [Your Field], I am passionate about crafting solutions that are both technically robust and aesthetically pleasing.
                 </p>
@@ -140,7 +167,7 @@
         </section>
 
         <!-- Contact/Social Links Section -->
-        <section id="contact" class="flex flex-col items-center py-10">
+        <section id="contact" class="flex flex-col items-center py-10 animate-fadeInUp">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">Let's Connect</h2>
             <a href="mailto:your_email@example.com" class="bg-accent text-white font-semibold text-lg py-3 px-8 rounded-full mb-6 transition-colors duration-200 hover:bg-red-600">
                 Let's Talk
