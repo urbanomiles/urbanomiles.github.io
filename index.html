@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Portfolio</title>
-    <!-- Use Tailwind CSS for rapid, responsive styling -->
+    <!-- Use Tailwind CSS for a minimalist, modern aesthetic -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add custom Tailwind configuration to define colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Define a new accent color
+                        accent: '#ff4a4a',
+                        // Define custom dark shades
+                        dark: {
+                            100: '#111111',
+                            200: '#222222',
+                            300: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Use Google Fonts for a clean, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Apply a custom font and dark background to the whole page */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a;
+            background-color: #000;
             color: #f5f5f5;
             min-height: 100vh;
         }
@@ -23,10 +45,10 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #2a2a2a;
+            background: #111;
         }
         ::-webkit-scrollbar-thumb {
-            background: #4a4a4a;
+            background: #444;
             border-radius: 4px;
         }
     </style>
@@ -36,67 +58,66 @@
     <main class="w-full max-w-5xl px-4 md:px-8 lg:px-12 my-8">
 
         <!-- Header/Navigation -->
-        <header class="flex justify-between items-center py-6 mb-8">
+        <header class="flex justify-between items-center py-6 mb-16">
             <h1 class="text-3xl font-bold tracking-tight text-white">Your Name</h1>
             <nav class="hidden md:flex space-x-6 text-gray-400">
+                <a href="#work" class="hover:text-white transition-colors duration-200">Work</a>
                 <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
-                <a href="#projects" class="hover:text-white transition-colors duration-200">Projects</a>
                 <a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a>
             </nav>
         </header>
 
-        <!-- About Section -->
-        <section id="about" class="bg-gray-800 p-8 md:p-12 rounded-xl shadow-xl border border-gray-700 mb-12">
-            <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-12">
-                <!-- Profile Image -->
-                <img src="https://placehold.co/150x150/4a4a4a/ffffff?text=Avatar" alt="Your Name" class="rounded-full w-28 h-28 md:w-40 md:h-40 object-cover border-4 border-gray-600 shadow-md">
-                <!-- About Text -->
+        <!-- Hero Section -->
+        <section class="mb-24 md:mb-32 text-center md:text-left">
+            <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">Hello, I'm [Your Name] 👋</h2>
-                    <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
-                        I'm a passionate and creative software developer specializing in web technologies. I love building beautiful and functional applications that solve real-world problems. Welcome to my portfolio!
+                    <h2 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-4">
+                        Hello. I'm <span class="text-accent">Your Name</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg md:text-2xl leading-relaxed">
+                        A passionate and creative developer who loves building beautiful and functional applications.
                     </p>
                 </div>
             </div>
         </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">My Work</h2>
+        
+        <!-- Work Section -->
+        <section id="work" class="mb-24">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10">My Work</h2>
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Project Card 1 -->
-                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://placehold.co/600x400/3d4852/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover">
+                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden">
+                    <img src="https://placehold.co/600x400/3d4852/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Project One</h3>
                         <p class="text-gray-400 text-sm mb-4">A brief description of your project. Mention the technologies used here, like React, Node.js, and MongoDB.</p>
-                        <a href="https://github.com/yourusername/project1" class="inline-block bg-white text-gray-800 font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                        <a href="https://github.com/yourusername/project1" target="_blank" class="inline-block bg-accent text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-red-600">
                             View on GitHub
                         </a>
                     </div>
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://placehold.co/600x400/5e6878/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden">
+                    <img src="https://placehold.co/600x400/5e6878/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Project Two</h3>
                         <p class="text-gray-400 text-sm mb-4">A brief description of your project. This could be a static website or a mobile app built with Swift.</p>
-                        <a href="https://github.com/yourusername/project2" class="inline-block bg-white text-gray-800 font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                        <a href="https://github.com/yourusername/project2" target="_blank" class="inline-block bg-accent text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-red-600">
                             View on GitHub
                         </a>
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://placehold.co/600x400/7a8596/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="group relative bg-dark-100 rounded-xl shadow-lg border border-dark-300 overflow-hidden">
+                    <img src="https://placehold.co/600x400/7a8596/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Project Three</h3>
                         <p class="text-gray-400 text-sm mb-4">A brief description of your project. Maybe a data visualization project using D3.js and Python.</p>
-                        <a href="https://github.com/yourusername/project3" class="inline-block bg-white text-gray-800 font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                        <a href="https://github.com/yourusername/project3" target="_blank" class="inline-block bg-accent text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-200 hover:bg-red-600">
                             View on GitHub
                         </a>
                     </div>
@@ -105,12 +126,25 @@
             </div>
         </section>
 
+        <!-- About Section -->
+        <section id="about" class="mb-24">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10">About Me</h2>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-6">
+                    [Your Name] is a software developer with a strong focus on creating clean, intuitive, and effective digital experiences. With a background in [Your Field], I am passionate about crafting solutions that are both technically robust and aesthetically pleasing.
+                </p>
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                    I believe that good design and solid engineering go hand-in-hand, and I'm constantly learning new skills to stay on the cutting edge.
+                </p>
+            </div>
+        </section>
+
         <!-- Contact/Social Links Section -->
         <section id="contact" class="flex flex-col items-center py-10">
-            <h2 class="text-3xl font-bold mb-6">Let's Connect</h2>
-            <p class="text-gray-400 text-lg mb-8 text-center max-w-xl">
-                I'm always open to new opportunities and collaborations. Feel free to reach out or connect with me on social media.
-            </p>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">Let's Connect</h2>
+            <a href="mailto:your_email@example.com" class="bg-accent text-white font-semibold text-lg py-3 px-8 rounded-full mb-6 transition-colors duration-200 hover:bg-red-600">
+                Let's Talk
+            </a>
             <div class="flex space-x-6">
                 <!-- GitHub Link -->
                 <a href="https://github.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
@@ -136,7 +170,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center text-gray-500 text-sm py-4">
+    <footer class="text-center text-gray-500 text-sm py-8">
         <p>&copy; 2024 Your Name. All Rights Reserved.</p>
     </footer>
 
